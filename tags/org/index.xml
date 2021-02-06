@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>org on Aides-Mémoire</title>
+		<link>https://jhoodsmith.github.io/blog/tags/org/</link>
+		<description>Recent content in org </description>
+		<generator>Hugo -- gohugo.io</generator>
+		
+  		<language>en</language>
+		
+		<managingEditor>Page(/tags/org) (James Hood-Smith)</managingEditor>
+    	
+  		<lastBuildDate>Tue, 02 Feb 2021 00:00:00 +0000</lastBuildDate>
+		
+		<atom:link href="/blog/tags/org/" rel="self" type="application/rss+xml" />
+		
+	</channel>
+</rss>

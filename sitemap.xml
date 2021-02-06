@@ -3,15 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jhoodsmith.github.io/blog/posts/creating-hugo-blog-post/</loc>
+    <lastmod>2021-02-06T15:06:04+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jhoodsmith.github.io/blog/</loc>
+    <lastmod>2021-02-06T15:06:04+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://jhoodsmith.github.io/blog/categories/</loc>
+    <lastmod>2021-02-06T15:06:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jhoodsmith.github.io/blog/categories/emacs/</loc>
+    <lastmod>2021-02-06T15:06:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jhoodsmith.github.io/blog/tags/hugo/</loc>
+    <lastmod>2021-02-06T15:06:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jhoodsmith.github.io/blog/tags/org/</loc>
+    <lastmod>2021-02-06T15:06:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jhoodsmith.github.io/blog/posts/</loc>
+    <lastmod>2021-02-06T15:06:04+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://jhoodsmith.github.io/blog/tags/</loc>
+    <lastmod>2021-02-06T15:06:04+00:00</lastmod>
   </url>
   
 </urlset>
