@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Aides-Mémoire on Aides-Mémoire</title>
-		<link>https://example.com/</link>
+		<link>https://jhoodsmith.github.io/blog/</link>
 		<description>Recent content in Aides-Mémoire </description>
 		<generator>Hugo -- gohugo.io</generator>
 		
@@ -9,7 +9,7 @@
 		
 		<managingEditor>Page(&#34;Aides-Mémoire&#34;) (James Hood-Smith)</managingEditor>
     	
-		<atom:link href="/" rel="self" type="application/rss+xml" />
+		<atom:link href="/blog/" rel="self" type="application/rss+xml" />
 		
 	</channel>
 </rss>
