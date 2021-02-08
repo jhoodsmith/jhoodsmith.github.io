@@ -25,6 +25,8 @@
 
 <link rel="stylesheet" href="https://jhoodsmith.github.io/blog/fontawesome/css/all.min.css" />
 
+  <link rel="stylesheet" href="https://jhoodsmith.github.io/blog/css/custom.css" />
+
 <link
   id="dark-mode-theme"
   rel="stylesheet"
@@ -32,13 +34,14 @@
 />
 
 <script>
-  var darkTheme = document.getElementById('dark-mode-theme')
-  var storedTheme = localStorage.getItem('dark-mode-storage')
-  if (storedTheme === 'dark') {
-    darkTheme.disabled = false
-  } else if (storedTheme === 'light') {
-    darkTheme.disabled = true
-  }
+ var darkTheme = document.getElementById('dark-mode-theme')
+ var storedTheme = localStorage.getItem('dark-mode-storage')
+
+ if (storedTheme === 'light') {
+     darkTheme.disabled = true
+ } else {
+     darkTheme.disabled = false
+ }
 </script>
 
 <script src="https://jhoodsmith.github.io/blog/js/bundle.js"></script>
@@ -99,6 +102,20 @@
   <div class="container" role="main">
     <article class="post-preview">
       
+        <div class="terms">
+          <h4 class="term-name">
+            <a href="https://jhoodsmith.github.io/blog/tags/hugo/">hugo</a>
+            <span class="badge">2</span>
+          </h4>
+        </div>
+      
+        <div class="terms">
+          <h4 class="term-name">
+            <a href="https://jhoodsmith.github.io/blog/tags/org/">org</a>
+            <span class="badge">2</span>
+          </h4>
+        </div>
+      
     </article>
   </div>
 
@@ -119,7 +136,7 @@
     <p class="credits copyright">
       <a href="https://jhoodsmith.github.io/blog/about">James Hood-Smith</a>
       &nbsp;&copy;
-      0001
+      2021
       
         &nbsp;/&nbsp;
         <a href="https://jhoodsmith.github.io/blog/">Aides-Mémoire</a>

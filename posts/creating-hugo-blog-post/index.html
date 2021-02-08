@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-<title>Writing Hugo blog posts in Org</title>
+<title>Hugo blog with Org and GitHub Actions</title>
 
 
   
@@ -18,16 +18,15 @@
   title="Aides-Mémoire"
 />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Writing Hugo blog posts in Org"/>
-<meta name="twitter:description" content="In which we setup our working environment for creating blog posts as sub-trees in a single org file.
-Installation   Install Hugo:
-brew install hugo   Setup Org: Add the following line to init.el.
-(use-package ox-hugo)   Setup blog with first post   Create new site:
-hugo new site blog   Configure Emacs to automatically create markdown files after saving the org source: Add the following to the file ."/>
+<meta name="twitter:title" content="Hugo blog with Org and GitHub Actions"/>
+<meta name="twitter:description" content="In which I setup a working environment for writing a Hugo blog in Org with
+automatic deployment using GitHub Actions."/>
 
 
 
 <link rel="stylesheet" href="https://jhoodsmith.github.io/blog/fontawesome/css/all.min.css" />
+
+  <link rel="stylesheet" href="https://jhoodsmith.github.io/blog/css/custom.css" />
 
 <link
   id="dark-mode-theme"
@@ -36,13 +35,14 @@ hugo new site blog   Configure Emacs to automatically create markdown files afte
 />
 
 <script>
-  var darkTheme = document.getElementById('dark-mode-theme')
-  var storedTheme = localStorage.getItem('dark-mode-storage')
-  if (storedTheme === 'dark') {
-    darkTheme.disabled = false
-  } else if (storedTheme === 'light') {
-    darkTheme.disabled = true
-  }
+ var darkTheme = document.getElementById('dark-mode-theme')
+ var storedTheme = localStorage.getItem('dark-mode-storage')
+
+ if (storedTheme === 'light') {
+     darkTheme.disabled = true
+ } else {
+     darkTheme.disabled = false
+ }
 </script>
 
 <script src="https://jhoodsmith.github.io/blog/js/bundle.js"></script>
@@ -89,7 +89,7 @@ hugo new site blog   Configure Emacs to automatically create markdown files afte
         <div class="posts-heading">
           
             <h1>
-              Writing Hugo blog posts in Org
+              Hugo blog with Org and GitHub Actions
             </h1>
           
           
@@ -103,63 +103,87 @@ hugo new site blog   Configure Emacs to automatically create markdown files afte
   <div class="container" role="main">
     <article class="article" class="blog-post">
       
-  <p>In which we setup our working environment for creating blog posts as sub-trees
-in a single org file.</p>
-<h2 id="installation">Installation</h2>
+<div class="summary">
+  In which I setup a working environment for writing a Hugo blog in Org with
+automatic deployment using GitHub Actions.
+</div>
+
+
+
+  <h2 id="motivation">Motivation</h2>
+<p>Like many dyed-in-the-wool Emacs users, I use <a href="https://orgmode.org">Org Mode</a> for much of my writing. I
+want a blog that I can deploy and write posts for in Org with minimum fuss.
+Having heard good things about it, I want to give <a href="https://gohugo.io">Hugo</a> a try. I also want to
+have automatic deployment with <a href="https://github.com/features/actions">GitHub Actions</a>.</p>
+<h2 id="steps">Steps</h2>
+<h3 id="installation">Installation</h3>
 <ol>
 <li>
 <p>Install Hugo:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
 </code></pre></div></li>
 <li>
-<p>Setup Org: Add the following line to <code>init.el</code>.</p>
+<p>Setup <a href="https://ox-hugo.scripter.co">ox-hugo</a>, the Org exporter backend that exports Org to Hugo-compatible
+Markdown.</p>
+<p>In my case, I use <a href="https://github.com/jwiegley/use-package">use-package</a>, and so add the following to <code>init.el</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(use-package ox-hugo)
 </code></pre></div></li>
 </ol>
-<h2 id="setup-blog-with-first-post">Setup blog with first post</h2>
+<h3 id="setup-blog-with-first-post">Setup blog with first post</h3>
 <ol>
 <li>
 <p>Create new site:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site blog
 </code></pre></div></li>
 <li>
-<p>Configure Emacs to automatically create markdown files after saving the org source:
-Add the following to the file <code>.dir-locals.el</code> in blog root</p>
+<p>Configure Emacs to automatically create markdown files after saving the org source:</p>
+<p>This is accomplished by adding the following Emacs Lisp expression to
+<code>.dir-locals.el</code> in the project root.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">((org-mode <span style="color:#f92672">.</span> ((<span style="color:#a6e22e">eval</span> <span style="color:#f92672">.</span> (org-hugo-auto-export-mode)))))
 </code></pre></div></li>
 <li>
 <p>Add a nice theme as a git sub-module (I&rsquo;m using <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>).</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd themes/
 git submodule add https://github.com/alexandrevicenzi/harbor.git
-</code></pre></div><p>To get started copy the configuration from the theme&rsquo;s <a href="https://themes.gohugo.io/harbor/">page in Hugo Themes</a>
-into the file <code>config.toml</code>.</p>
+</code></pre></div><p>I want to use my blog straight away&mdash;hence my use of someone else&rsquo;s theme.
+In a subsequent post I look at modifying the theme, but for the time
+being I use the theme as is, and copy the configuration from the theme&rsquo;s
+<a href="https://themes.gohugo.io/harbor/">home page in Hugo Themes</a> to <code>config.toml</code>.</p>
 </li>
 <li>
 <p>Add <code>blog.org</code> to the root of the blog directory and create your first blog post</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">#+hugo_base_dir: ./
-#+hugo_weight: auto
-#+hugo_auto_set_lastmod: t
-#+author: James Hood-Smith
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+hugo_base_dir</span><span style="color:#75715e">: ./</span>
+<span style="color:#75715e">#+hugo_weight</span><span style="color:#75715e">: auto</span>
+<span style="color:#75715e">#+hugo_auto_set_lastmod</span><span style="color:#75715e">: t</span>
+<span style="color:#75715e">#+author</span><span style="color:#75715e">: James Hood-Smith</span>
 
-<span style="color:#66d9ef">*</span> Emacs                                                              :@emacs:
-All posts in here will have the category set to /emacs/.
-** TODO Writing Hugo blog posts in Org                             :hugo:org:
-:PROPERTIES:
-:EXPORT_FILE_NAME: creating-hugo-blog-post
-:EXPORT_DATE: 2021-02-02
-:END:
+*<span style="font-weight:bold"> Emacs                                                             </span><span style="font-style:italic"> :@emacs:</span>
+All posts in here will have the category set to <span style="font-style:italic">/emacs/</span>.
+<span style="color:#75715e">**</span><span style="color:#960050;background-color:#1e0010"> TODO</span> Writing Hugo blog posts in Org                             :hugo:org:
+<span style="color:#75715e">:PROPERTIES:
+</span><span style="color:#75715e"></span><span style="color:#75715e">:EXPORT_FILE_NAME: creating-hugo-blog-post
+</span><span style="color:#75715e">:EXPORT_DATE: 2021-02-02
+</span><span style="color:#75715e"></span><span style="color:#75715e">:END:</span>
 In which we setup our working environment for creating blog posts as sub-trees
 in a single org file.
 
-*** Installation
+<span style="color:#75715e">***</span> Installation
 ...
-</code></pre></div></li>
+</code></pre></div><p>To ensure things are working well run the Hugo development server</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server -D --navigateToChange
+</code></pre></div><p>View the blog at <code>http://localhost:1313</code>.</p>
+</li>
 </ol>
-<h2 id="deploy-to-github-pages">Deploy to GitHub pages</h2>
+<h3 id="automatic-deployment-to-github-pages">Automatic deployment to GitHub pages</h3>
 <ol>
 <li>
 <p>Go to GitHub and create a repository for the source code and a repository for
-the deployed site. In my case the repositories are <code>blog-source</code> and <code>blog</code></p>
+the deployed site. In my case the repositories are <code>blog-source</code> and
+<code>jhoodsmith.github.io</code>.</p>
+</li>
+<li>
+<p>In the &ldquo;GitHub Pages&rdquo; section of the settings page of the
+<code>jhoodsmith.github.io</code> repository, set the source to the <code>main</code> branch.</p>
 </li>
 <li>
 <p>Add a basic <code>.gitignore</code> file to the blog directory root</p>
@@ -177,9 +201,55 @@ $RECYCLE.BIN/
 .DS_Store
 </code></pre></div></li>
 <li>
-<p>Update the <code>baseurl</code> property in <code>config.toml</code> to the name of</p>
+<p>Update the <code>baseurl</code> property in <code>config.toml</code> to the URL of the blog.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">baseurl</span> = <span style="color:#e6db74">&#34;https://jhoodsmith.github.io/blog/&#34;</span>
+</code></pre></div></li>
+<li>
+<p>In your account settings in GitHub, create a new personal access token (PAT)
+with read and write access to your repositories. (Skip this step if you
+already have a suitable PAT).</p>
 </li>
+<li>
+<p>Store the PAT in the <code>Secrets</code> setting of the <code>blog-source</code> repository with
+key name <code>PERSONAL_TOKEN</code>.</p>
+</li>
+<li>
+<p>Create a new GitHub Actions workflow in <code>.github/workflows/blog_deploy.yml</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">name</span>: <span style="color:#ae81ff">hugo CI</span>
+
+<span style="color:#f92672">on</span>:
+  <span style="color:#f92672">push</span>:
+    <span style="color:#f92672">branches</span>: [ <span style="color:#ae81ff">main ]</span>
+
+<span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">build</span>:
+    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+
+    <span style="color:#f92672">steps</span>:
+<span style="color:#f92672">​      - uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
+   <span style="color:#f92672">with</span>:
+     <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>
+     <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">1</span>
+
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
+   <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+   <span style="color:#f92672">with</span>:
+     <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
+
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
+   <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo</span>
+
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy</span>
+   <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+   <span style="color:#f92672">with</span>:
+     <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">${{ secrets.PERSONAL_TOKEN }}</span>
+     <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">jhoodsmith/jhoodsmith.github.io</span>
+     <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main</span>
+     <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+</code></pre></div></li>
 </ol>
+<p>If all has gone well, then the blog should automatically be deployed to your
+GitHub pages site each time you push to the <code>main</code> branch of <code>blog-source</code>.</p>
 
 
 
