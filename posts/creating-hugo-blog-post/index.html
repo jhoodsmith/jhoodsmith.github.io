@@ -108,12 +108,23 @@ automatic deployment using GitHub Actions.
 </div>
 <div style="text-align:center; margin-top: 20px">
   <em class="fa fa-calendar-alt"></em
-				 >&nbsp;Feb 3, 2021
+				 >&nbsp;Feb 5, 2021
 </div>
 
 
-
-  <h2 id="motivation">Motivation</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#steps">Steps</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#setup-blog-with-first-post">Setup blog with first post</a></li>
+        <li><a href="#making-change-to-theme">Making change to theme</a></li>
+        <li><a href="#automatic-deployment-to-github-pages">Automatic deployment to GitHub pages</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav><h2 id="motivation">Motivation</h2>
 <p>Like many dyed-in-the-wool Emacs users, I use <a href="https://orgmode.org">Org Mode</a> for much of my writing. I
 want a blog that I can deploy and write posts for in Org with minimum fuss.
 Having heard good things about it, I want to give <a href="https://gohugo.io">Hugo</a> a try. I also want to
@@ -123,7 +134,7 @@ have automatic deployment with <a href="https://github.com/features/actions">Git
 <ol>
 <li>
 <p>Install Hugo:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install hugo
 </code></pre></div></li>
 <li>
 <p>Setup <a href="https://ox-hugo.scripter.co">ox-hugo</a>, the Org exporter backend that exports Org to Hugo-compatible
@@ -136,7 +147,7 @@ Markdown.</p>
 <ol>
 <li>
 <p>Create new site:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site blog
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ hugo new site blog
 </code></pre></div></li>
 <li>
 <p>Configure Emacs to automatically create markdown files after saving the org source:</p>
@@ -146,12 +157,12 @@ Markdown.</p>
 </code></pre></div></li>
 <li>
 <p>Add a nice theme as a git sub-module (I&rsquo;m using <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd themes/
-git submodule add https://github.com/alexandrevicenzi/harbor.git
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cd themes/
+$ git submodule add https://github.com/alexandrevicenzi/harbor.git
 </code></pre></div><p>I want to use my blog straight away&mdash;hence my use of someone else&rsquo;s theme.
-In a subsequent post I look at modifying the theme, but for the time
-being I use the theme as is, and copy the configuration from the theme&rsquo;s
-<a href="https://themes.gohugo.io/harbor/">home page in Hugo Themes</a> to <code>config.toml</code>.</p>
+In a subsequent post I look at creating a new theme from scratch, but for the
+time being I use Harbor with its default settings, hence I copy the
+configuration from the theme&rsquo;s <a href="https://themes.gohugo.io/harbor/">home page in Hugo Themes</a> to <code>config.toml</code>.</p>
 </li>
 <li>
 <p>Add <code>blog.org</code> to the root of the blog directory and create your first blog post</p>
@@ -159,23 +170,52 @@ being I use the theme as is, and copy the configuration from the theme&rsquo;s
 <span style="color:#75715e">#+hugo_weight</span><span style="color:#75715e">: auto</span>
 <span style="color:#75715e">#+author</span><span style="color:#75715e">: James Hood-Smith</span>
 
-*<span style="font-weight:bold"> Emacs                                                             </span><span style="font-style:italic"> :@emacs:</span>
-All posts in here will have the category set to <span style="font-style:italic">/emacs/</span>.
-<span style="color:#75715e">**</span><span style="color:#960050;background-color:#1e0010"> TODO</span> Writing Hugo blog posts in Org                             :hugo:org:
+*<span style="font-weight:bold"> Blogging                                                       </span><span style="font-style:italic"> :@blogging:</span>
+All posts in here will have the category set to <span style="font-style:italic">/blogging/</span>.
+<span style="color:#75715e">**</span><span style="color:#e6db74"> DONE</span> Hugo blog with Org and GitHub Actions                      :hugo:org:
 <span style="color:#75715e">:PROPERTIES:
 </span><span style="color:#75715e"></span><span style="color:#75715e">:EXPORT_FILE_NAME: creating-hugo-blog-post
-</span><span style="color:#75715e">:EXPORT_DATE: 2021-02-02
+</span><span style="color:#75715e">:EXPORT_DATE: 2021-02-03
+</span><span style="color:#75715e">:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :toc true
 </span><span style="color:#75715e"></span><span style="color:#75715e">:END:</span>
-In which we setup our working environment for creating blog posts as sub-trees
-in a single org file.
 
-<span style="color:#75715e">***</span> Installation
-...
+<span style="color:#75715e">#+begin_description</span>
+In which I setup a working environment for writing a Hugo blog in Org with
+automatic deployment using GitHub Actions.
+<span style="color:#75715e">#+end_description</span>
+
+<span style="color:#75715e">***</span> Motivation
+Like many dyed-in-the-wool Emacs users, I use [[<span style="color:#a6e22e">https://orgmode.org</span>][<span style="color:#f92672">Org Mode</span>]] ...
 </code></pre></div><p>To ensure things are working well run the Hugo development server</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server -D --navigateToChange
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ hugo server -D --navigateToChange
 </code></pre></div><p>View the blog at <code>http://localhost:1313</code>.</p>
 </li>
 </ol>
+<h3 id="making-change-to-theme">Making change to theme</h3>
+<h4 id="overwriting-the-hugo-dot-summary-page-variable">Overwriting the Hugo .Summary page variable</h4>
+<p>Notice in the blog post source above that I made use of the Org meta data
+<code>Description</code> variable. I would like this to be used in place of the Hugo page
+variable <code>.Summary</code>.  To achive this I need to add the following to the top of my
+Org source</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">#+hugo_front_matter_key_replace: description&gt;summary
+</code></pre></div><p>As explained <a href="https://ox-hugo.scripter.co/doc/replace-front-matter-keys/">here</a>, this swaps the Hugo front-matter variable with the Org meta
+data variable.</p>
+<h4 id="modifying-theme-layout-file">Modifying theme layout file</h4>
+<p>To change an aspect of a Hugo theme, it&rsquo;s just a matter of creating a file with
+the same name and directory structure as the layout file you want to replace. In
+my case, I want to modify part of <code>/themes/harbor/layouts/partials/toc.html</code>,
+which is where the theme author inserts the page variable <code>.Content</code>. Hence, I
+copy the file to <code>/layouts/partials/toc.html</code>.</p>
+<p>In the copy of <code>toc.html</code>, I then replace <code>{{ .Content }}</code> with the following.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if eq .Type &#34;posts&#34; }}
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary&#34;</span>&gt;
+  {{ .Summary }}
+&lt;/<span style="color:#f92672">div</span>&gt;
+{{ end }}
+{{ .Content }}
+</code></pre></div><p>This ensures that all content files of type &ldquo;posts&rdquo; will have their content
+prefaced with the value of <code>.Summary</code>. Following the theme author&rsquo;s
+instructions, I have added my custom CSS to <code>/static/css/custom.css</code>.</p>
 <h3 id="automatic-deployment-to-github-pages">Automatic deployment to GitHub pages</h3>
 <ol>
 <li>
@@ -222,33 +262,31 @@ key name <code>PERSONAL_TOKEN</code>.</p>
 <span style="color:#f92672">jobs</span>:
   <span style="color:#f92672">build</span>:
     <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
-
     <span style="color:#f92672">steps</span>:
 <span style="color:#f92672">​      - uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
-    <span style="color:#f92672">with</span>:
-      <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>
-      <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">1</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>
+          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">1</span>
 
       - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
-    <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
-    <span style="color:#f92672">with</span>:
-      <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
 
       - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
-    <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo</span>
+        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify</span>
 
       - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy</span>
-    <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
-    <span style="color:#f92672">with</span>:
-      <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">${{ secrets.PERSONAL_TOKEN }}</span>
-      <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">jhoodsmith/jhoodsmith.github.io</span>
-      <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main</span>
-      <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">${{ secrets.PERSONAL_TOKEN }}</span>
+          <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">jhoodsmith/jhoodsmith.github.io</span>
+          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main</span>
+          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
 </code></pre></div></li>
 </ol>
 <p>If all has gone well, then the blog should automatically be deployed to your
 GitHub pages site each time you push to the <code>main</code> branch of <code>blog-source</code>.</p>
-
 
 
 
