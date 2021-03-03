@@ -1,9 +1,9 @@
 <!doctype html><html lang=en-gb><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Hugo blog with Org and GitHub Actions - Aides-Mémoire</title><meta name=author content="James Hood-Smith"><link rel=stylesheet href=https://www.hood-smith.me.uk/css/styles.min.0a5483dd291275050dad49caea7a843af9605c71adbb91595a3df16270996fc7.css integrity=sha256-ClSD3SkSdQUNrUnK6nqEOvlgXHGtu5FZWj3xYnCZb8c=><script type=text/javascript src=/js/index.min.cbf1beb33ab540b0b62cc472d6f20dba196bb590bba95a3fe74c0ff37b831f4d.js></script></head><body class="min-h-screen bg-gray-900 text-gray-400 body-font flex flex-col"><header class="container max-w-screen-lg mx-auto p-6 flex"><div class=flex-1><a href=/ title="Posts Index"><i class="fas text-lg fa-lightbulb hover:text-yellow-300"></i></a></div><div class="flex-1 text-right"><a href=/about title="About me"><i class="fas text-lg fa-user-alt hover:text-yellow-300"></i></a></div></header><h1 class="mx-auto text-center max-w-screen-lg font-bold title-font
 text-white text-4xl md:text-5xl mb-4">Hugo blog with Org and GitHub Actions</h1><div class="container px-2 py-6 mx-auto flex-1 max-w-screen-sm prose"><div class="text-center italic mb-4">In which I setup a working environment for writing a Hugo blog in Org with
-automatic deployment using GitHub Actions.</div><div class=text-center><i class="fas fa-calendar-alt"></i>Feb 2, 2021</div><h2 id=motivation>Motivation</h2><p>Like many dyed-in-the-wool Emacs users, I use <a href=https://orgmode.org>Org Mode</a> for much of my writing. I
+automatic deployment using GitHub Actions.</div><div class=text-center><i class="fas fa-calendar-alt"></i>Feb 5, 2021</div><h2 id=motivation>Motivation</h2><p>Like many dyed-in-the-wool Emacs users, I use <a href=https://orgmode.org>Org Mode</a> for much of my writing. I
 want a blog that I can deploy and write posts for in Org with minimum fuss.
 Having heard good things about it, I want to give <a href=https://gohugo.io>Hugo</a> a try. I also want to
-have automatic deployment with <a href=https://github.com/features/actions>GitHub Actions</a></p><h2 id=steps>Steps</h2><h3 id=installation>Installation</h3><ol><li><p>Install Hugo:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ brew install hugo
+have automatic deployment with <a href=https://github.com/features/actions>GitHub Actions</a>.</p><h2 id=steps>Steps</h2><h3 id=installation>Installation</h3><ol><li><p>Install Hugo:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ brew install hugo
 </code></pre></div></li><li><p>Setup <a href=https://ox-hugo.scripter.co>ox-hugo</a>, the Org exporter backend that exports Org to Hugo-compatible
 Markdown.</p><p>In my case, I use <a href=https://github.com/jwiegley/use-package>use-package</a>, and so add the following to <code>init.el</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elisp data-lang=elisp>(use-package ox-hugo)
 </code></pre></div></li></ol><h3 id=setup-blog-with-first-post>Setup blog with first post</h3><ol><li><p>Create new site:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ hugo new site blog
@@ -81,24 +81,24 @@ key name <code>PERSONAL_TOKEN</code>.</p></li><li><p>Create a new GitHub Actions
     <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
     <span style=color:#f92672>steps</span>:
 <span style=color:#f92672>​      - uses</span>: <span style=color:#ae81ff>actions/checkout@v2</span>
-   <span style=color:#f92672>with</span>:
-     <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
-     <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>1</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>1</span>
 
       - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
-   <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
-   <span style=color:#f92672>with</span>:
-     <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
 
       - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
-   <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
+        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
 
       - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
-   <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
-   <span style=color:#f92672>with</span>:
-     <span style=color:#f92672>personal_token</span>: <span style=color:#ae81ff>${{ secrets.PERSONAL_TOKEN }}</span>
-     <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>jhoodsmith/jhoodsmith.github.io</span>
-     <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main</span>
-     <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>personal_token</span>: <span style=color:#ae81ff>${{ secrets.PERSONAL_TOKEN }}</span>
+          <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>jhoodsmith/jhoodsmith.github.io</span>
+          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main</span>
+          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
 </code></pre></div></li></ol><p>If all has gone well, then the blog should automatically be deployed to your
 GitHub pages site each time you push to the <code>main</code> branch of <code>blog-source</code>.</p></div><footer class="text-sm text-gray-500 py-8 text-center">© 2021 James Hood-Smith</footer></body></html>
