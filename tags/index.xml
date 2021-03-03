@@ -1,17 +1,1 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Tags on Aides-Mémoire</title>
-		<link>https://www.hood-smith.me.uk/tags/</link>
-		<description>Recent content in Tags </description>
-		<generator>Hugo -- gohugo.io</generator>
-		
-  		<language>en</language>
-		
-		<managingEditor>Page(/tags) (James Hood-Smith)</managingEditor>
-    	
-  		<lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate>
-		
-		<atom:link href="/tags/" rel="self" type="application/rss+xml" />
-		
-	</channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Aides-Mémoire</title><link>https://www.hood-smith.me.uk/tags/</link><description>Recent content in Tags on Aides-Mémoire</description><generator>Hugo -- gohugo.io</generator><language>en-gb</language><lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.hood-smith.me.uk/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>hugo</title><link>https://www.hood-smith.me.uk/tags/hugo/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://www.hood-smith.me.uk/tags/hugo/</guid><description/></item><item><title>org</title><link>https://www.hood-smith.me.uk/tags/org/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://www.hood-smith.me.uk/tags/org/</guid><description/></item></channel></rss>
