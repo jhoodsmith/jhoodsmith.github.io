@@ -1,0 +1,60 @@
+<!doctype html><html lang=en-gb><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Starting from scratch - Aides-Mémoire</title><meta name=description content="In which I describe the starter projects for the languages and frameworks I work
+with. These currently comprise Ruby (non Rails), Ruby on Rails, Python and Hugo"><meta name=subject content="general"><meta name=author content="James Hood-Smith"><meta name=robots content="index,follow"><meta name=googlebot content="index,follow"><meta name=google content="nositelinkssearchbox"><meta name=google-site-verification content="aowWupsxj1lvaIv7Wt_uVh7Z__T-wgVCvimzs9S2BOE"><link rel=stylesheet href=https://www.hood-smith.me.uk/css/styles.min.922995c526fcb651beeaae412f16b5cea2133a7e6e3ea9701d97f0a737f9342a.css integrity=sha256-kimVxSb8tlG+6q5BLxa1zqITOn5uPqlwHZfwpzf5NCo=><script type=text/javascript src=/js/index.min.cbf1beb33ab540b0b62cc472d6f20dba196bb590bba95a3fe74c0ff37b831f4d.js></script></head><body class="min-h-screen bg-gray-900 text-gray-400 body-font flex flex-col"><header class="container max-w-screen-lg mx-auto p-6 flex"><div class=flex-1><a href=/ title="Posts Index"><i class="fas text-lg fa-lightbulb hover:text-yellow-300"></i></a></div><div class="flex-1 text-right"><a href=/about title="About me"><i class="fas text-lg fa-user-alt hover:text-yellow-300"></i></a></div></header><h1 class="mx-auto text-center max-w-screen-lg font-bold title-font
+text-white text-4xl md:text-5xl mb-4">Starting from scratch</h1><div class="container px-2 py-6 mx-auto flex-1 max-w-screen-sm prose"><div class="text-center italic mb-4">In which I describe the starter projects for the languages and frameworks I work
+with. These currently comprise Ruby (non Rails), Ruby on Rails, Python and Hugo</div><div class=text-center><i class="fas fa-calendar-alt fa-fw"></i>Feb 12, 2021</div><h2 id=motiviation>Motiviation</h2><p>&ldquo;How do I start this again?&rdquo; I often ask myself this when I start a new project.
+What are the external libraries I need? What tools do I need for test-driven
+development? How do I get things to play nice with my <a href=https://github.com/jhoodsmith/.emacs.d>Emacs configuration</a>?</p><h2 id=ruby--non-rails>Ruby (non Rails)</h2><p>Create project directory</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ mkdir new-project-name
+$ cd new-project-name
+</code></pre></div><p>Install <a href=https://bundler.io>Bundler</a></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ gem install bundler
+</code></pre></div><p>Specify dependencies in a <code>Gemfile</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>source <span style=color:#e6db74>&#39;https://rubygems.org&#39;</span>
+gem <span style=color:#e6db74>&#39;pry&#39;</span>
+gem <span style=color:#e6db74>&#39;pry-doc&#39;</span>
+gem <span style=color:#e6db74>&#39;rspec&#39;</span>
+gem <span style=color:#e6db74>&#39;rubocop&#39;</span>, require: <span style=color:#66d9ef>false</span>
+</code></pre></div><p>Install and initialise <a href=https://rspec.info>RSpec</a></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ bundle install
+$ rspec --init
+</code></pre></div><p>Add an appropriate <code>.gitignore</code> file from <a href=https://gitignore.io>https://gitignore.io</a></p><h2 id=python>Python</h2><p>Assuming <a href=https://github.com/pyenv/pyenv>pyenv</a> is installed, remind yourself of what versions are available on the local system</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pyenv versions
+</code></pre></div><p>Create a new virtual environemnt for the your chosen python version</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pyenv virtualenv 3.7.5 new-project-name
+</code></pre></div><p>Create project directory</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ mkdir new-project-name
+$ cd new-project-name
+</code></pre></div><p>Create <code>.python-version</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ echo new-project-name &gt; .python-version
+</code></pre></div><p>Specifiy development dependencies in <code>requirements.txt</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>###### Working environment ######
+ipython
+jedi
+pytest
+
+###### Frequently used ######
+numpy
+pandas
+requests
+scikit-learn
+scipy
+</code></pre></div><p>Install packages</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pip install -r requirements.txt
+</code></pre></div><p>Add an appropriate <code>.gitignore</code> file from <a href=https://gitignore.io>https://gitignore.io</a></p><h2 id=ruby-on-rails-6>Ruby on Rails 6</h2><p>The assumption here is that there will be a <a href=https://www.postgresql.org>PostgreSQL</a> database, and that <a href=https://github.com/heartcombo/devise>Devise</a>
+will be used for authentication.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ rails new -d postgresql new-project
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#75715e># ...</span>
+group <span style=color:#e6db74>:development</span>, <span style=color:#e6db74>:test</span> <span style=color:#66d9ef>do</span>
+  <span style=color:#75715e># ...</span>
+  gem <span style=color:#e6db74>&#39;byebug&#39;</span>, <span style=color:#e6db74>platforms</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>:mri</span>, <span style=color:#e6db74>:mingw</span>, <span style=color:#e6db74>:x64_mingw</span><span style=color:#f92672>]</span>
+  gem <span style=color:#e6db74>&#39;factory_bot_rails&#39;</span>
+  gem <span style=color:#e6db74>&#39;pry-byebug&#39;</span>
+  gem <span style=color:#e6db74>&#39;pry-doc&#39;</span>
+  gem <span style=color:#e6db74>&#39;rspec-rails&#39;</span>
+  gem <span style=color:#e6db74>&#39;rails-controller-testing&#39;</span>
+<span style=color:#66d9ef>end</span>
+
+group <span style=color:#e6db74>:development</span> <span style=color:#66d9ef>do</span>
+  gem <span style=color:#e6db74>&#39;rubocop-rails&#39;</span>
+<span style=color:#66d9ef>end</span>
+
+gem <span style=color:#e6db74>&#39;devise&#39;</span>
+gem <span style=color:#e6db74>&#39;devise_invitable&#39;</span>
+gem <span style=color:#e6db74>&#39;tailwindcss-rails&#39;</span>
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ yarn add @fortawesome/fontawesome-free
+</code></pre></div><p>Add to <code>app/javascript/packs/application.js</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#34;@fortawesome/fontawesome-free/css/all&#34;</span>
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ rails tailwindcss:install
+$ rails db:create
+$ rails g devise:install
+$ rails g devise_invitable User
+</code></pre></div><h2 id=hugo>Hugo</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ hugo new site new-project
+</code></pre></div><p>Setup Tailwind CSS theme and JavaScript, as described in my <a href=/posts/custom-theme-with-tailwindcss/>previous post</a>.</p></div><footer class="text-sm text-gray-500 py-8 text-center">© 2021 James Hood-Smith</footer></body></html>
