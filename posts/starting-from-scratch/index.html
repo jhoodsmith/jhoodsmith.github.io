@@ -83,18 +83,52 @@ $ npm install --save-dev autoprefixer postcss postcss-cli postcss-import tailwin
 </code></pre></div><p>In <code>/assets/css/main.scss</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scss data-lang=scss><span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/base&#34;</span>;
 <span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/components&#34;</span>;
 <span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/utilities&#34;</span>;
+</code></pre></div><p>In <code>/config.toml</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=color:#a6e22e>baseURL</span> = <span style=color:#e6db74>&#34;https://www.example.co.uk&#34;</span>
+<span style=color:#a6e22e>languageCode</span> = <span style=color:#e6db74>&#34;en-gb&#34;</span>
+<span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#34;New Web Site&#34;</span>
+
+[<span style=color:#a6e22e>build</span>]
+  <span style=color:#a6e22e>writeStats</span> = <span style=color:#66d9ef>true</span>
 </code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npx tailwindcss init
 $ mv tailwind.config.js assets/css
-</code></pre></div><p>In <code>/layouts/_defaults/baseof.html</code>:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{{ $styles := resources.Get &#34;css/main.scss&#34; | toCSS | postCSS (dict &#34;config&#34; &#34;./assets/css/postcss.config.js&#34;) }}
-{{ if .Site.IsServer }}
-&lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.RelPermalink }}&#34;</span>&gt;
-{{ else }}
-{{ $styles := $styles | minify | fingerprint | resources.PostProcess  }}
-&lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.Permalink }}&#34;</span> <span style=color:#a6e22e>integrity</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.Data.Integrity }}&#34;</span>&gt;
-{{ end }}
-</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm install --save @fortawesome/fontawesome-free
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm install --save @fortawesome/fontawesome-free alpinejs
 </code></pre></div><p>Then add the following to <code>/assets/js/index.js</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/fontawesome&#39;</span>
 <span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/solid&#39;</span>
-</code></pre></div><p>Again, where you inserted the Hugo Pipe work on css:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{{- $scripts := resources.Get &#34;js/index.js&#34; | js.Build | minify | fingerprint }}
-&lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text/javascript&#34;</span> <span style=color:#a6e22e>src </span><span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;{{ $scripts.RelPermalink }}&#39;</span>&gt;&lt;/<span style=color:#f92672>script</span>&gt;
+
+<span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;alpinejs&#39;</span>
+</code></pre></div><p>In <code>/layouts/_default/baseof.html</code>:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=color:#75715e>&lt;!DOCTYPE html&gt;</span>
+&lt;<span style=color:#f92672>html</span> <span style=color:#a6e22e>lang</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;en-gb&#34;</span>&gt;
+  {{- partial &#34;head.html&#34; . -}}
+  &lt;<span style=color:#f92672>body</span>&gt;
+    {{- partial &#34;header.html&#34; . -}}
+    {{- block &#34;main&#34; . }}{{- end }}
+    {{- partial &#34;footer.html&#34; . -}}
+  &lt;/<span style=color:#f92672>body</span>&gt;
+&lt;/<span style=color:#f92672>html</span>&gt;
+</code></pre></div><p>In <code>/layouts/partials/head.html</code>:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>head</span>&gt;
+  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>charset</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span> /&gt;
+  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;viewport&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;width=device-width, initial-scale=1&#34;</span> /&gt;
+  &lt;<span style=color:#f92672>title</span>&gt;{{ .Site.Title -}}&lt;/<span style=color:#f92672>title</span>&gt;
+
+  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;description&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>&gt;
+  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;robots&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;index,follow&#34;</span>&gt;
+  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;googlebot&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;index,follow&#34;</span>&gt;
+  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;google&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;nositelinkssearchbox&#34;</span>&gt;
+
+  {{ $styles := resources.Get &#34;css/main.scss&#34; | toCSS | postCSS (dict &#34;config&#34; &#34;./assets/css/postcss.config.js&#34;) }}
+  {{ if .Site.IsServer }}
+  &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.RelPermalink }}&#34;</span>&gt;
+  {{ else }}
+  {{ $styles := $styles | minify | fingerprint | resources.PostProcess  }}
+  &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.RelPermalink }}&#34;</span>&gt;
+  {{ end }}
+
+  {{- $scripts := resources.Get &#34;js/index.js&#34; | js.Build | minify | fingerprint }}
+  &lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text/javascript&#34;</span> <span style=color:#a6e22e>src </span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $scripts.RelPermalink }}&#34;</span>&gt;&lt;/<span style=color:#f92672>script</span>&gt;
+&lt;/<span style=color:#f92672>head</span>&gt;
+</code></pre></div><p>Create blank <code>/layouts/index.html</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{{ define &#34;main&#34; }}
+Hello World
+{{ end }}
+</code></pre></div><p>Finally, create empty header and footer</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ touch layouts/partials/footer.html
+$ touch layouts/partials/header.html
 </code></pre></div></div><footer class="text-sm text-gray-500 py-8 text-center">© 2021 James Hood-Smith</footer></body></html>
