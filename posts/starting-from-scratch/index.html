@@ -8,10 +8,13 @@ development? How do I get things to play nice with my <a href=https://github.com
 $ cd new-project-name
 </code></pre></div><p>Install <a href=https://bundler.io>Bundler</a></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ gem install bundler
 </code></pre></div><p>Specify dependencies in a <code>Gemfile</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>source <span style=color:#e6db74>&#39;https://rubygems.org&#39;</span>
-gem <span style=color:#e6db74>&#39;pry&#39;</span>
-gem <span style=color:#e6db74>&#39;pry-doc&#39;</span>
-gem <span style=color:#e6db74>&#39;rspec&#39;</span>
-gem <span style=color:#e6db74>&#39;rubocop&#39;</span>, require: <span style=color:#66d9ef>false</span>
+group <span style=color:#e6db74>:development</span> <span style=color:#66d9ef>do</span>
+  gem <span style=color:#e6db74>&#39;pry&#39;</span>
+  gem <span style=color:#e6db74>&#39;pry-doc&#39;</span>
+  gem <span style=color:#e6db74>&#39;rspec&#39;</span>
+  gem <span style=color:#e6db74>&#39;rubocop&#39;</span>
+  gem <span style=color:#e6db74>&#39;solargraph&#39;</span>
+<span style=color:#66d9ef>end</span>
 </code></pre></div><p>Install and initialise <a href=https://rspec.info>RSpec</a></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ bundle install
 $ rspec --init
 </code></pre></div><p>Add an appropriate <code>.gitignore</code> file from <a href=https://gitignore.io>https://gitignore.io</a></p><h2 id=python>Python</h2><p>Assuming <a href=https://github.com/pyenv/pyenv>pyenv</a> is installed, remind yourself of what versions are available on the local system</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pyenv versions
@@ -36,12 +39,12 @@ will be used for authentication.</p><div class=highlight><pre style=color:#f8f8f
 </code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#75715e># ...</span>
 group <span style=color:#e6db74>:development</span>, <span style=color:#e6db74>:test</span> <span style=color:#66d9ef>do</span>
   <span style=color:#75715e># ...</span>
-  gem <span style=color:#e6db74>&#39;byebug&#39;</span>, <span style=color:#e6db74>platforms</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>:mri</span>, <span style=color:#e6db74>:mingw</span>, <span style=color:#e6db74>:x64_mingw</span><span style=color:#f92672>]</span>
   gem <span style=color:#e6db74>&#39;factory_bot_rails&#39;</span>
   gem <span style=color:#e6db74>&#39;pry-byebug&#39;</span>
   gem <span style=color:#e6db74>&#39;pry-doc&#39;</span>
   gem <span style=color:#e6db74>&#39;rspec-rails&#39;</span>
   gem <span style=color:#e6db74>&#39;rails-controller-testing&#39;</span>
+  gem <span style=color:#e6db74>&#39;solargraph&#39;</span>
 <span style=color:#66d9ef>end</span>
 
 group <span style=color:#e6db74>:development</span> <span style=color:#66d9ef>do</span>
