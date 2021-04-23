@@ -21,10 +21,8 @@ $ cd new-project-name
 </code></pre></div><p>Create <code>.python-version</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ echo new-project-name &gt; .python-version
 </code></pre></div><p>Specifiy development dependencies in <code>requirements.txt</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>###### Working environment ######
 ipython
-jedi
 pytest
-flake8
-python-language-server
+python-language-server[all]
 
 ###### Frequently used ######
 numpy
