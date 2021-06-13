@@ -17,7 +17,7 @@ $ mkdir lib
 gem <span style=color:#e6db74>&#39;rspec&#39;</span>
 </code></pre></div><p>Next run <code>bundle</code> with added bin directory</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ gem bundle install --binstubs
 </code></pre></div><p>And setup RSpec</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ bin/rpsec --init
-</code></pre></div><p>Add library files to <code>lib</code>, as this is automatically added to the Ruby
+</code></pre></div><p>Create your files in <code>lib</code>, as this directory is automatically added to the Ruby
 <code>LOAD_PATH</code> when running RSpec.</p><h2 id=python>Python</h2><p>Assuming <a href=https://github.com/pyenv/pyenv>pyenv</a> is installed, remind yourself of what versions are available on
 the local system</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pyenv versions
 </code></pre></div><p>Create a new virtual environment for the your chosen python version</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pyenv virtualenv 3.7.5 new-project-name
