@@ -1,23 +1,75 @@
-<!doctype html><html lang=en-gb><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Creating custom Hugo theme with Tailwind CSS - Aides-Mémoire</title><meta name=description content="In which I create a new Hugo theme using Tailwind CSS and Hugo Pipes, and upgrade
-my GitHub Actions workflow to use NPM."><meta name=subject content="blogging"><meta name=keywords content="hugo,org,tailwindcss"><meta name=author content="James Hood-Smith"><meta name=robots content="index,follow"><meta name=googlebot content="index,follow"><meta name=google content="nositelinkssearchbox"><meta name=google-site-verification content="aowWupsxj1lvaIv7Wt_uVh7Z__T-wgVCvimzs9S2BOE"><link rel=stylesheet href=/css/styles.min.3cec7ce19ac9f50a5061331b65faa4fbeacfb40e923753a46c58a8474616dd1b.css integrity=sha256-POx84ZrJ9QpQYTMbZfqk++rPtA6SN1OkbFioR0YW3Rs=><script type=text/javascript src=/js/index.min.cbf1beb33ab540b0b62cc472d6f20dba196bb590bba95a3fe74c0ff37b831f4d.js></script></head><body class="min-h-screen bg-gray-900 text-gray-400 body-font flex flex-col"><header class="container max-w-screen-lg mx-auto p-6 flex"><div class=flex-1><a href=/ title="Posts Index"><i class="fas text-lg fa-lightbulb hover:text-yellow-300"></i></a></div><div class="flex-1 text-right"><a href=/about title="About me"><i class="fas text-lg fa-user-alt hover:text-yellow-300"></i></a></div></header><h1 class="mx-auto text-center max-w-screen-lg font-bold title-font
-text-white text-4xl md:text-5xl mb-4">Creating custom Hugo theme with Tailwind CSS</h1><div class="container px-2 py-6 mx-auto flex-1 max-w-screen-sm prose"><div class="text-center italic mb-4">In which I create a new Hugo theme using Tailwind CSS and Hugo Pipes, and upgrade
-my GitHub Actions workflow to use NPM.</div><div class=text-center><i class="fas fa-calendar-alt fa-fw"></i>
-Feb 20, 2021</div><aside><nav id=TableOfContents><ul><li><a href=#motivation>Motivation</a></li><li><a href=#install-tailwind-css>Install Tailwind CSS</a></li><li><a href=#tailwind-typography-and-org-export>Tailwind Typography and Org Export</a></li><li><a href=#font-awesome>Font Awesome</a></li><li><a href=#extending-github-actions-workflow>Extending GitHub Actions Workflow</a></li></ul></nav></aside><h2 id=motivation>Motivation</h2><p>In my <a href=/posts/creating-hugo-blog-post/>previous post</a> I created a blog using <a href=https://gohugo.io>Hugo</a> with post creation done in
+<!doctype html><html lang=en-gb><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>
+Creating custom Hugo theme with Tailwind CSS - Aides-Mémoire
+</title>
+<meta name=description content="In which I create a new Hugo theme using Tailwind CSS and Hugo Pipes, and upgrade
+my GitHub Actions workflow to use NPM.">
+<meta name=subject content="blogging">
+<meta name=keywords content="hugo,org,tailwindcss">
+<meta name=author content="James Hood-Smith">
+<meta name=robots content="index,follow">
+<meta name=googlebot content="index,follow">
+<meta name=google content="nositelinkssearchbox">
+<meta name=google-site-verification content="aowWupsxj1lvaIv7Wt_uVh7Z__T-wgVCvimzs9S2BOE">
+<link rel=stylesheet href="/css/styles.min.3cec7ce19ac9f50a5061331b65faa4fbeacfb40e923753a46c58a8474616dd1b.css" integrity="sha256-POx84ZrJ9QpQYTMbZfqk++rPtA6SN1OkbFioR0YW3Rs=">
+<script type=text/javascript src=/js/index.min.cbf1beb33ab540b0b62cc472d6f20dba196bb590bba95a3fe74c0ff37b831f4d.js></script>
+</head>
+<body class="min-h-screen bg-gray-900 text-gray-400 body-font flex flex-col"><header class="container max-w-screen-lg mx-auto p-6 flex">
+<div class=flex-1>
+<a href=/ title="Posts Index">
+<i class="fas text-lg fa-lightbulb hover:text-yellow-300"></i>
+</a>
+</div>
+<div class="flex-1 text-right">
+<a href=/about title="About me">
+<i class="fas text-lg fa-user-alt hover:text-yellow-300"></i>
+</a>
+</div>
+</header>
+<h1 class="mx-auto text-center max-w-screen-lg font-bold title-font
+text-white text-4xl md:text-5xl mb-4">Creating custom Hugo theme with Tailwind CSS</h1>
+<div class="container px-2 py-6 mx-auto flex-1 max-w-screen-sm prose">
+<div class="text-center italic mb-4">In which I create a new Hugo theme using Tailwind CSS and Hugo Pipes, and upgrade
+my GitHub Actions workflow to use NPM.</div>
+<div class=text-center>
+<i class="fas fa-calendar-alt fa-fw"></i>
+Feb 20, 2021
+</div>
+<aside>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#motivation>Motivation</a></li>
+<li><a href=#install-tailwind-css>Install Tailwind CSS</a></li>
+<li><a href=#tailwind-typography-and-org-export>Tailwind Typography and Org Export</a></li>
+<li><a href=#font-awesome>Font Awesome</a></li>
+<li><a href=#extending-github-actions-workflow>Extending GitHub Actions Workflow</a></li>
+</ul>
+</nav>
+</aside>
+<h2 id=motivation>Motivation</h2>
+<p>In my <a href=/posts/creating-hugo-blog-post/>previous post</a> I created a blog using <a href=https://gohugo.io>Hugo</a> with post creation done in
 <a href=https://orgmode.org>Org Mode</a>. I used a theme from another developer, but now I want to create
 something of my own. I want to use <a href=https://tailwindcss.com>Tailwind CSS</a>, which I currently use for
-other projects.</p><h2 id=install-tailwind-css>Install Tailwind CSS</h2><p>In the blog&rsquo;s root directory, instruct Hugo to create a new, blank theme
-template and install the relevant npm packages.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ hugo new theme jhs-tailwindcss
+other projects.</p>
+<h2 id=install-tailwind-css>Install Tailwind CSS</h2>
+<p>In the blog&rsquo;s root directory, instruct Hugo to create a new, blank theme
+template and install the relevant npm packages.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ hugo new theme jhs-tailwindcss
 $ npm init
-$ npm install --save-dev autoprefixer postcss postcss-cli postcss-import tailwindcss
+$ npm install --save-dev autoprefixer postcss postcss-cli postcss-import tailwindcss @fullhuman/postcss-purgecss
 </code></pre></div><p>Next, edit <code>config.toml</code> to set the site&rsquo;s theme to be the one just created and
-set it up for working with CSS post processing.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=color:#75715e># ...</span>
+set it up for working with CSS post processing.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=color:#75715e># ...</span>
 <span style=color:#a6e22e>theme</span> = <span style=color:#e6db74>&#34;jhs-tailwindcss&#34;</span>
 <span style=color:#75715e># ...</span>
 [<span style=color:#a6e22e>build</span>]
   <span style=color:#a6e22e>writeStats</span> = <span style=color:#66d9ef>true</span>
 </code></pre></div><p>I will use Hugo Pipes to process the CSS files with <a href=https://postcss.org>PostCSS</a>. The configuration
 for this is in <code>themes/jhs-tailwindtheme/assets/css/postcss.config.js</code>, so
-open it up and add the following:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>themeDir</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>__</span><span style=color:#a6e22e>dirname</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;/../../&#39;</span>;
+open it up and add the following:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>themeDir</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>__</span><span style=color:#a6e22e>dirname</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;/../../&#39;</span>;
 
 <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>purgecss</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;@fullhuman/postcss-purgecss&#39;</span>)({
     <span style=color:#75715e>// see https://gohugo.io/hugo-pipes/postprocess/#css-purging-with-postcss
@@ -45,7 +97,8 @@ open it up and add the following:</p><div class=highlight><pre style=color:#f8f8
     ]
 }
 </code></pre></div><p>Next create a minimal Tailwind CSS configuration in
-<code>themes/jhs-tailwindcss/assets/css/tailwind.config.js</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
+<code>themes/jhs-tailwindcss/assets/css/tailwind.config.js</code></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
   <span style=color:#a6e22e>theme</span><span style=color:#f92672>:</span> {
     <span style=color:#a6e22e>extend</span><span style=color:#f92672>:</span> {}
   },
@@ -53,10 +106,12 @@ open it up and add the following:</p><div class=highlight><pre style=color:#f8f8
   <span style=color:#a6e22e>plugins</span><span style=color:#f92672>:</span> []
 }
 </code></pre></div><p>Then in <code>themes/jhs-tailwindcss/assets/css/styles.scss</code> add tailwind&rsquo;s <code>base</code>,
-<code>components</code> and <code>utilities</code> styles.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scss data-lang=scss><span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/base&#34;</span>;
+<code>components</code> and <code>utilities</code> styles.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scss data-lang=scss><span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/base&#34;</span>;
 <span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/components&#34;</span>;
 <span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/utilities&#34;</span>;
-</code></pre></div><p>We&rsquo;ll now set up Hugo Pipes. This is done in <code>themes/jhs-tailwind/layouts/partials/head.html</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>  ...
+</code></pre></div><p>We&rsquo;ll now set up Hugo Pipes. This is done in <code>themes/jhs-tailwind/layouts/partials/head.html</code></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>  ...
 {{ $styles := resources.Get &#34;css/styles.scss&#34; | toCSS | postCSS (dict &#34;config&#34; &#34;./assets/css/postcss.config.js&#34;) }}
 {{ if .Site.IsServer }}
   &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.RelPermalink }}&#34;</span>&gt;
@@ -66,12 +121,18 @@ open it up and add the following:</p><div class=highlight><pre style=color:#f8f8
 {{ end }}
 </code></pre></div><p>At this point, the Tailwind CSS setup is complete, so we can use Tailwind CSS
 classes in the layout files of our new Hugo theme. See the blog&rsquo;s <a href=https://github.com/jhoodsmith/blog-source>repo</a> for full
-details of the Tailwind CSS classes I used for the theme.</p><h2 id=tailwind-typography-and-org-export>Tailwind Typography and Org Export</h2><p>The <a href=https://github.com/tailwindlabs/tailwindcss-typography>Tailwind Typography</a> plugin provides good typographic styling for unstyled HTML,
-and so is perfect for a blog whose content is exported from Org Mode.</p><p>Start by installing the plugin&rsquo;s npm package:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm install @tailwindcss/typography
+details of the Tailwind CSS classes I used for the theme.</p>
+<h2 id=tailwind-typography-and-org-export>Tailwind Typography and Org Export</h2>
+<p>The <a href=https://github.com/tailwindlabs/tailwindcss-typography>Tailwind Typography</a> plugin provides good typographic styling for unstyled HTML,
+and so is perfect for a blog whose content is exported from Org Mode.</p>
+<p>Start by installing the plugin&rsquo;s npm package:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm install @tailwindcss/typography
 </code></pre></div><p>To customise the plugin&rsquo;s default look-and-full, you need to edit
 <code>themes/jhs-tailwindcss/assets/css/tailwind.config.js</code>, and specify changes
-using <a href=https://tailwindcss.com/docs/plugins#css-in-js-syntax>CSS-in-JS</a> syntax.</p><p>This blog has various edits to <code>tailwind.config.js</code>, but the following are the
-important ones needed to make the exported Org Mode code blocks look right.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
+using <a href=https://tailwindcss.com/docs/plugins#css-in-js-syntax>CSS-in-JS</a> syntax.</p>
+<p>This blog has various edits to <code>tailwind.config.js</code>, but the following are the
+important ones needed to make the exported Org Mode code blocks look right.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
     <span style=color:#a6e22e>theme</span><span style=color:#f92672>:</span> {
       <span style=color:#a6e22e>extend</span><span style=color:#f92672>:</span> {
 	  <span style=color:#a6e22e>typography</span><span style=color:#f92672>:</span> {
@@ -100,18 +161,27 @@ important ones needed to make the exported Org Mode code blocks look right.</p><
       <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;@tailwindcss/typography&#39;</span>),
     ]
 }
-</code></pre></div><p>It should be noted that I also add the following to <code>styles.scss</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scss data-lang=scss><span style=color:#f92672>pre</span> {
-    <span style=color:#f92672>background-color</span><span style=color:#a6e22e>:</span> #374151 <span style=color:#f92672>!</span><span style=color:#f92672>important</span>;
+</code></pre></div><p>It should be noted that I also add the following to <code>styles.scss</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scss data-lang=scss><span style=color:#f92672>pre</span> {
+    <span style=color:#a6e22e>background-color</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>#374151</span> <span style=color:#66d9ef>!important</span>;
 }
-</code></pre></div><p>Again, see the blog&rsquo;s <a href=https://github.com/jhoodsmith/blog-source>repo</a> for full details.</p><h2 id=font-awesome>Font Awesome</h2><p>You don&rsquo;t need to install Font Awesome using npm. However, I expect I will need
-additional JavaScript libraries in future, so want a good JS bundler setup.</p><p>Start by installing the Font Awesome package:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm install --save @fortawesome/fontawesome-free
-</code></pre></div><p>Then add the following to <code>themes/jhs-tailwind/assets/js/index.js</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/fontawesome&#39;</span>
+</code></pre></div><p>Again, see the blog&rsquo;s <a href=https://github.com/jhoodsmith/blog-source>repo</a> for full details.</p>
+<h2 id=font-awesome>Font Awesome</h2>
+<p>You don&rsquo;t need to install Font Awesome using npm. However, I expect I will need
+additional JavaScript libraries in future, so want a good JS bundler setup.</p>
+<p>Start by installing the Font Awesome package:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm install --save @fortawesome/fontawesome-free
+</code></pre></div><p>Then add the following to <code>themes/jhs-tailwind/assets/js/index.js</code></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/fontawesome&#39;</span>
 <span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/solid&#39;</span>
-</code></pre></div><p>The Hugo Pipes work is, again, done in <code>themes/jhs-tailwind/layouts/partials/head.html</code>:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{{- $scripts := resources.Get &#34;js/index.js&#34; | js.Build | minify | fingerprint }}
+</code></pre></div><p>The Hugo Pipes work is, again, done in <code>themes/jhs-tailwind/layouts/partials/head.html</code>:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{{- $scripts := resources.Get &#34;js/index.js&#34; | js.Build | minify | fingerprint }}
 &lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text/javascript&#34;</span> <span style=color:#a6e22e>src </span><span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;{{ $scripts.RelPermalink }}&#39;</span>&gt;&lt;/<span style=color:#f92672>script</span>&gt;
-</code></pre></div><h2 id=extending-github-actions-workflow>Extending GitHub Actions Workflow</h2><p>The following is my complete GitHub Actions workflow, found in
+</code></pre></div><h2 id=extending-github-actions-workflow>Extending GitHub Actions Workflow</h2>
+<p>The following is my complete GitHub Actions workflow, found in
 <code>.github/workflows/deploy.yml</code>. After I push the to the <code>main</code> branch, the
-workflow will install dependencies using npm and then build the site using Hugo.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>name</span>: <span style=color:#ae81ff>hugo CI</span>
+workflow will install dependencies using npm and then build the site using Hugo.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>name</span>: <span style=color:#ae81ff>hugo CI</span>
 
 <span style=color:#f92672>on</span>:
   <span style=color:#f92672>push</span>:
@@ -155,4 +225,10 @@ workflow will install dependencies using npm and then build the site using Hugo.
           <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>jhoodsmith/jhoodsmith.github.io</span>
           <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main</span>
           <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
-</code></pre></div></div><footer class="text-sm text-gray-500 py-8 text-center">© 2021 James Hood-Smith</footer></body></html>
+</code></pre></div>
+</div>
+<footer class="text-sm text-gray-500 py-8 text-center">
+© 2021 James Hood-Smith
+</footer>
+</body>
+</html>
