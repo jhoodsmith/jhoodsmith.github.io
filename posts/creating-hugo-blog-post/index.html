@@ -193,24 +193,24 @@ key name <code>PERSONAL_TOKEN</code>.</p>
     <span style=color:#f92672>steps</span>:
 <span style=color:#f92672>​      - uses</span>: <span style=color:#ae81ff>actions/checkout@v2</span>
         <span style=color:#f92672>with</span>:
-          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
-          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>1</span>
+		  <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+		  <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>1</span>
 
       - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
-        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
-        <span style=color:#f92672>with</span>:
-          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+	    <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
+		<span style=color:#f92672>with</span>:
+		  <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
 
       - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
-        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
+	    <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
 
       - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
-        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
-        <span style=color:#f92672>with</span>:
-          <span style=color:#f92672>personal_token</span>: <span style=color:#ae81ff>${{ secrets.PERSONAL_TOKEN }}</span>
-          <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>jhoodsmith/jhoodsmith.github.io</span>
-          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main</span>
-          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+	    <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
+		<span style=color:#f92672>with</span>:
+		  <span style=color:#f92672>personal_token</span>: <span style=color:#ae81ff>${{ secrets.PERSONAL_TOKEN }}</span>
+		  <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>jhoodsmith/jhoodsmith.github.io</span>
+		  <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main</span>
+		  <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
 </code></pre></div></li>
 </ol>
 <p>If all has gone well, then the blog should automatically be deployed to your
