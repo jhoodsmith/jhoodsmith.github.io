@@ -1,227 +1,142 @@
-<!doctype html><html lang=en-gb><head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>
-Starting from scratch - Aides-Mémoire
-</title>
-<meta name=description content="In which I describe the starter projects for the languages and frameworks I work
-with. These currently comprise Ruby (non Rails), Ruby on Rails, Python and Hugo">
-<meta name=subject content="general">
-<meta name=author content="James Hood-Smith">
-<meta name=robots content="index,follow">
-<meta name=googlebot content="index,follow">
-<meta name=google content="nositelinkssearchbox">
-<meta name=google-site-verification content="aowWupsxj1lvaIv7Wt_uVh7Z__T-wgVCvimzs9S2BOE">
-<link rel=stylesheet href="/css/styles.min.3cec7ce19ac9f50a5061331b65faa4fbeacfb40e923753a46c58a8474616dd1b.css" integrity="sha256-POx84ZrJ9QpQYTMbZfqk++rPtA6SN1OkbFioR0YW3Rs=">
-<script type=text/javascript src=/js/index.min.cbf1beb33ab540b0b62cc472d6f20dba196bb590bba95a3fe74c0ff37b831f4d.js></script>
-</head>
-<body class="min-h-screen bg-gray-900 text-gray-400 body-font flex flex-col"><header class="container max-w-screen-lg mx-auto p-6 flex">
-<div class=flex-1>
-<a href=/ title="Posts Index">
-<i class="fas text-lg fa-lightbulb hover:text-yellow-300"></i>
-</a>
-</div>
-<div class="flex-1 text-right">
-<a href=/about title="About me">
-<i class="fas text-lg fa-user-alt hover:text-yellow-300"></i>
-</a>
-</div>
-</header>
-<h1 class="mx-auto text-center max-w-screen-lg font-bold title-font
-text-white text-4xl md:text-5xl mb-4">Starting from scratch</h1>
-<div class="container px-2 py-6 mx-auto flex-1 max-w-screen-sm prose">
-<div class="text-center italic mb-4">In which I describe the starter projects for the languages and frameworks I work
-with. These currently comprise Ruby (non Rails), Ruby on Rails, Python and Hugo</div>
-<div class=text-center>
-<i class="fas fa-calendar-alt fa-fw"></i>
-May 15, 2021
-</div>
-<aside>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#motiviation>Motiviation</a></li>
-<li><a href=#ruby-gem-with-simple-cli--non-rails>Ruby GEM with simple CLI (non Rails)</a></li>
-<li><a href=#simple-ruby-program--not-a-gem>Simple Ruby program (not a Gem)</a></li>
-<li><a href=#python>Python</a></li>
-<li><a href=#ruby-on-rails-6>Ruby on Rails 6</a></li>
-<li><a href=#hugo>Hugo</a></li>
-</ul>
-</nav>
-</aside>
-<h2 id=motiviation>Motiviation</h2>
-<p>&ldquo;How do I start this again?&rdquo; I often ask myself this when I start a new project.
+<!doctype html><html lang=en-gb><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Starting from scratch - Aides-Mémoire</title><meta name=description content="In which I describe the starter projects for the languages and frameworks I work
+with. These currently comprise Ruby (non Rails), Ruby on Rails, Python and Hugo"><meta name=subject content="general"><meta name=author content="James Hood-Smith"><meta name=robots content="index,follow"><meta name=googlebot content="index,follow"><meta name=google content="nositelinkssearchbox"><meta name=google-site-verification content="aowWupsxj1lvaIv7Wt_uVh7Z__T-wgVCvimzs9S2BOE"><link rel=stylesheet href="/css/styles.min.3cec7ce19ac9f50a5061331b65faa4fbeacfb40e923753a46c58a8474616dd1b.css" integrity="sha256-POx84ZrJ9QpQYTMbZfqk++rPtA6SN1OkbFioR0YW3Rs="><script type=text/javascript src=/js/index.min.21f61b76865e5517700c81f9e2b07cee29ff221f0147430c38dba6af55d9fb38.js></script></head><body class="min-h-screen bg-gray-900 text-gray-400 body-font flex flex-col"><header class="container max-w-screen-lg mx-auto p-6 flex"><div class=flex-1><a href=/ title="Posts Index"><i class="fas text-lg fa-lightbulb hover:text-yellow-300"></i></a></div><div class="flex-1 text-right"><a href=/about title="About me"><i class="fas text-lg fa-user-alt hover:text-yellow-300"></i></a></div></header><h1 class="mx-auto text-center max-w-screen-lg font-bold title-font
+text-white text-4xl md:text-5xl mb-4">Starting from scratch</h1><div class="container px-2 py-6 mx-auto flex-1 max-w-screen-sm prose"><div class="text-center italic mb-4">In which I describe the starter projects for the languages and frameworks I work
+with. These currently comprise Ruby (non Rails), Ruby on Rails, Python and Hugo</div><div class=text-center><i class="fas fa-calendar-alt fa-fw"></i>
+May 15, 2021</div><aside><nav id=TableOfContents><ul><li><a href=#motiviation>Motiviation</a></li><li><a href=#ruby-gem-with-simple-cli--non-rails>Ruby GEM with simple CLI (non Rails)</a></li><li><a href=#simple-ruby-program--not-a-gem>Simple Ruby program (not a Gem)</a></li><li><a href=#python>Python</a></li><li><a href=#ruby-on-rails-6>Ruby on Rails 6</a></li><li><a href=#hugo>Hugo</a></li></ul></nav></aside><h2 id=motiviation>Motiviation</h2><p>&ldquo;How do I start this again?&rdquo; I often ask myself this when I start a new project.
 What are the external libraries I need? What tools do I need for test-driven
-development? How do I get things to play nice with my <a href=https://github.com/jhoodsmith/.emacs.d>Emacs configuration</a>?</p>
-<h2 id=ruby-gem-with-simple-cli--non-rails>Ruby GEM with simple CLI (non Rails)</h2>
-<p>Create directory structure</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ bundler gem --exe --test<span style=color:#f92672>=</span>rspec --ci<span style=color:#f92672>=</span>github my_app
-</code></pre></div><p>This will create a new directory called <code>my_app</code> containing a skeleton directory
-structure for a new project.</p>
-<p>Next you will need to update the <code>.gemspec</code> file located in the root of the
+development? How do I get things to play nice with my <a href=https://github.com/jhoodsmith/.emacs.d>Emacs configuration</a>?</p><h2 id=ruby-gem-with-simple-cli--non-rails>Ruby GEM with simple CLI (non Rails)</h2><p>Create directory structure</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ bundler gem --exe --test<span style=color:#f92672>=</span>rspec --ci<span style=color:#f92672>=</span>github my_app
+</span></span></code></pre></div><p>This will create a new directory called <code>my_app</code> containing a skeleton directory
+structure for a new project.</p><p>Next you will need to update the <code>.gemspec</code> file located in the root of the
 directory. It is especially important to update any field whose value starts
-with &ldquo;TODO&rdquo;, otherwise the Gem will not build.</p>
-<p>Add <code>pry</code> and <code>pry-byebug</code> to <code>Gemfile</code> and uncomment the two lines in
-<code>/bin/console</code> that refer to Pry.</p>
-<h2 id=simple-ruby-program--not-a-gem>Simple Ruby program (not a Gem)</h2>
-<p>Create project directory</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ mkdir new-project-name
-$ cd new-project-name
-$ mkdir lib
-</code></pre></div><p>Initialise <code>Gemfile</code> with RSpec</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>source <span style=color:#e6db74>&#39;https://rubygems.org&#39;</span>
-
-gem <span style=color:#e6db74>&#39;rspec&#39;</span>
-</code></pre></div><p>Next run <code>bundle</code> with added bin directory</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ gem bundle install --binstubs
-</code></pre></div><p>And setup RSpec</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ bin/rpsec --init
-</code></pre></div><p>Create your files in <code>lib</code>, as this directory is automatically added to the Ruby
-<code>LOAD_PATH</code> when running RSpec.</p>
-<h2 id=python>Python</h2>
-<p>Assuming <a href=https://github.com/pyenv/pyenv>pyenv</a> is installed, remind yourself of what versions are available on
-the local system</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pyenv versions
-</code></pre></div><p>Create a new virtual environment for the your chosen python version</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pyenv virtualenv 3.7.5 new-project-name
-</code></pre></div><p>Create project directory</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ mkdir new-project-name
-$ cd new-project-name
-</code></pre></div><p>Create <code>.python-version</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ echo new-project-name &gt; .python-version
-</code></pre></div><p>Specifiy development dependencies in <code>requirements.txt</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>###### Working environment ######
-ipython
-pytest
-python-language-server[all]
-
-###### Frequently used ######
-numpy
-pandas
-requests
-scikit-learn
-scipy
-</code></pre></div><p>Install packages</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ pip install -r requirements.txt
-</code></pre></div><p>Add an appropriate <code>.gitignore</code> file from <a href=https://gitignore.io>https://gitignore.io</a></p>
-<h2 id=ruby-on-rails-6>Ruby on Rails 6</h2>
-<p>The assumption here is that there will be a <a href=https://www.postgresql.org>PostgreSQL</a> database, and that <a href=https://github.com/heartcombo/devise>Devise</a>
-will be used for authentication.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ rails new -d postgresql new-project
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#75715e># ...</span>
-group <span style=color:#e6db74>:development</span>, <span style=color:#e6db74>:test</span> <span style=color:#66d9ef>do</span>
-  <span style=color:#75715e># ...</span>
-  gem <span style=color:#e6db74>&#39;factory_bot_rails&#39;</span>
-  gem <span style=color:#e6db74>&#39;pry-byebug&#39;</span>
-  gem <span style=color:#e6db74>&#39;pry-doc&#39;</span>
-  gem <span style=color:#e6db74>&#39;rspec-rails&#39;</span>
-  gem <span style=color:#e6db74>&#39;rails-controller-testing&#39;</span>
-  gem <span style=color:#e6db74>&#39;solargraph&#39;</span>
-<span style=color:#66d9ef>end</span>
-
-group <span style=color:#e6db74>:development</span> <span style=color:#66d9ef>do</span>
-  gem <span style=color:#e6db74>&#39;rubocop-rails&#39;</span>
-<span style=color:#66d9ef>end</span>
-
-gem <span style=color:#e6db74>&#39;devise&#39;</span>
-gem <span style=color:#e6db74>&#39;devise_invitable&#39;</span>
-gem <span style=color:#e6db74>&#39;tailwindcss-rails&#39;</span>
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ yarn add @fortawesome/fontawesome-free
-</code></pre></div><p>Add to <code>app/javascript/packs/application.js</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#34;@fortawesome/fontawesome-free/css/all&#34;</span>
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ rails tailwindcss:install
-$ rails db:create
-$ rails g devise:install
-$ rails g devise_invitable User
-$ rails g devise:views
-$ rails g rspec:install
-</code></pre></div><p>To make Devise happy add the following to <code>config/environments/development.rb</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>config<span style=color:#f92672>.</span>action_mailer<span style=color:#f92672>.</span>default_url_options <span style=color:#f92672>=</span> { <span style=color:#e6db74>host</span>: <span style=color:#e6db74>&#39;localhost&#39;</span>, <span style=color:#e6db74>port</span>: <span style=color:#ae81ff>3000</span> }
-</code></pre></div><h2 id=hugo>Hugo</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ hugo new site new-project
-</code></pre></div><p>From within project directory</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm init
-$ npm install --save-dev autoprefixer postcss postcss-cli postcss-import tailwindcss
-</code></pre></div><p>In <code>/assets/css/postcss.config.js</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>purgecss</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;@fullhuman/postcss-purgecss&#39;</span>)({
-    <span style=color:#a6e22e>content</span><span style=color:#f92672>:</span> [ <span style=color:#e6db74>&#39;./hugo_stats.json&#39;</span> ],
-    <span style=color:#a6e22e>defaultExtractor</span><span style=color:#f92672>:</span> (<span style=color:#a6e22e>content</span>) =&gt; {
-      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>els</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>parse</span>(<span style=color:#a6e22e>content</span>).<span style=color:#a6e22e>htmlElements</span>;
-      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>els</span>.<span style=color:#a6e22e>tags</span>.<span style=color:#a6e22e>concat</span>(<span style=color:#a6e22e>els</span>.<span style=color:#a6e22e>classes</span>, <span style=color:#a6e22e>els</span>.<span style=color:#a6e22e>ids</span>);
-    }
-});
-
-<span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
-    <span style=color:#a6e22e>plugins</span><span style=color:#f92672>:</span> [
-      <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;postcss-import&#39;</span>)({
-	  <span style=color:#a6e22e>path</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;assets/css&#34;</span>]
-      }),
-      <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;tailwindcss&#39;</span>)(<span style=color:#e6db74>&#39;assets/css/tailwind.config.js&#39;</span>),
-      <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;autoprefixer&#39;</span>),
-      ...(<span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>env</span>.<span style=color:#a6e22e>HUGO_ENVIRONMENT</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;production&#39;</span> <span style=color:#f92672>?</span> [ <span style=color:#a6e22e>purgecss</span> ] <span style=color:#f92672>:</span> [])
-    ]
-};
-</code></pre></div><p>In <code>/assets/css/main.scss</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scss data-lang=scss><span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/base&#34;</span>;
-<span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/components&#34;</span>;
-<span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/utilities&#34;</span>;
-</code></pre></div><p>In <code>/config.toml</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=color:#a6e22e>baseURL</span> = <span style=color:#e6db74>&#34;https://www.example.co.uk&#34;</span>
-<span style=color:#a6e22e>languageCode</span> = <span style=color:#e6db74>&#34;en-gb&#34;</span>
-<span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#34;New Web Site&#34;</span>
-
-[<span style=color:#a6e22e>build</span>]
-<span style=color:#a6e22e>writeStats</span> = <span style=color:#66d9ef>true</span>
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npx tailwindcss init
-$ mv tailwind.config.js assets/css
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm install --save @fortawesome/fontawesome-free alpinejs
-</code></pre></div><p>Then add the following to <code>/assets/js/index.js</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/fontawesome&#39;</span>
-<span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/solid&#39;</span>
-
-<span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;alpinejs&#39;</span>
-</code></pre></div><p>In <code>/layouts/_default/baseof.html</code>:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=color:#75715e>&lt;!DOCTYPE html&gt;</span>
-&lt;<span style=color:#f92672>html</span> <span style=color:#a6e22e>lang</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;en-gb&#34;</span>&gt;
-  {{- partial &#34;head.html&#34; . -}}
-  &lt;<span style=color:#f92672>body</span>&gt;
-    {{- partial &#34;header.html&#34; . -}}
-    {{- block &#34;main&#34; . }}{{- end }}
-    {{- partial &#34;footer.html&#34; . -}}
-  &lt;/<span style=color:#f92672>body</span>&gt;
-&lt;/<span style=color:#f92672>html</span>&gt;
-</code></pre></div><p>In <code>/layouts/partials/head.html</code>:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>head</span>&gt;
-  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>charset</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span> /&gt;
-  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;viewport&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;width=device-width, initial-scale=1&#34;</span> /&gt;
-  &lt;<span style=color:#f92672>title</span>&gt;{{ .Site.Title -}}&lt;/<span style=color:#f92672>title</span>&gt;
-
-  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;description&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>&gt;
-  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;robots&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;index,follow&#34;</span>&gt;
-  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;googlebot&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;index,follow&#34;</span>&gt;
-  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;google&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;nositelinkssearchbox&#34;</span>&gt;
-
-  {{ $styles := resources.Get &#34;css/main.scss&#34; | toCSS | postCSS (dict &#34;config&#34; &#34;./assets/css/postcss.config.js&#34;) }}
-  {{ if .Site.IsServer }}
-  &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.RelPermalink }}&#34;</span>&gt;
-  {{ else }}
-  {{ $styles := $styles | minify | fingerprint | resources.PostProcess  }}
-  &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.RelPermalink }}&#34;</span>&gt;
-  {{ end }}
-
-  {{- $scripts := resources.Get &#34;js/index.js&#34; | js.Build | minify | fingerprint }}
-  &lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text/javascript&#34;</span> <span style=color:#a6e22e>src </span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $scripts.RelPermalink }}&#34;</span>&gt;&lt;/<span style=color:#f92672>script</span>&gt;
-&lt;/<span style=color:#f92672>head</span>&gt;
-</code></pre></div><p>Create blank <code>/layouts/index.html</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{{ define &#34;main&#34; }}
-Hello World
-{{ end }}
-</code></pre></div><p>Finally, create empty header and footer</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ touch layouts/partials/footer.html
-$ touch layouts/partials/header.html
-</code></pre></div>
-</div>
-<footer class="text-sm text-gray-500 py-8 text-center">
-© 2021 James Hood-Smith
-</footer>
-</body>
-</html>
+with &ldquo;TODO&rdquo;, otherwise the Gem will not build.</p><p>Add <code>pry</code> and <code>pry-byebug</code> to <code>Gemfile</code> and uncomment the two lines in
+<code>/bin/console</code> that refer to Pry.</p><h2 id=simple-ruby-program--not-a-gem>Simple Ruby program (not a Gem)</h2><p>Create project directory</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ mkdir new-project-name
+</span></span><span style=display:flex><span>$ cd new-project-name
+</span></span><span style=display:flex><span>$ mkdir lib
+</span></span></code></pre></div><p>Initialise <code>Gemfile</code> with RSpec</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=display:flex><span>source <span style=color:#e6db74>&#39;https://rubygems.org&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>gem <span style=color:#e6db74>&#39;rspec&#39;</span>
+</span></span></code></pre></div><p>Next run <code>bundle</code> with added bin directory</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ gem bundle install --binstubs
+</span></span></code></pre></div><p>And setup RSpec</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ bin/rpsec --init
+</span></span></code></pre></div><p>Create your files in <code>lib</code>, as this directory is automatically added to the Ruby
+<code>LOAD_PATH</code> when running RSpec.</p><h2 id=python>Python</h2><p>Assuming <a href=https://github.com/pyenv/pyenv>pyenv</a> is installed, remind yourself of what versions are available on
+the local system</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ pyenv versions
+</span></span></code></pre></div><p>Create a new virtual environment for the your chosen python version</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ pyenv virtualenv 3.7.5 new-project-name
+</span></span></code></pre></div><p>Create project directory</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ mkdir new-project-name
+</span></span><span style=display:flex><span>$ cd new-project-name
+</span></span></code></pre></div><p>Create <code>.python-version</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ echo new-project-name &gt; .python-version
+</span></span></code></pre></div><p>Specifiy development dependencies in <code>requirements.txt</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>###### Working environment ######
+</span></span><span style=display:flex><span>ipython
+</span></span><span style=display:flex><span>pytest
+</span></span><span style=display:flex><span>python-language-server[all]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>###### Frequently used ######
+</span></span><span style=display:flex><span>numpy
+</span></span><span style=display:flex><span>pandas
+</span></span><span style=display:flex><span>requests
+</span></span><span style=display:flex><span>scikit-learn
+</span></span><span style=display:flex><span>scipy
+</span></span></code></pre></div><p>Install packages</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ pip install -r requirements.txt
+</span></span></code></pre></div><p>Add an appropriate <code>.gitignore</code> file from <a href=https://gitignore.io>https://gitignore.io</a></p><h2 id=ruby-on-rails-6>Ruby on Rails 6</h2><p>The assumption here is that there will be a <a href=https://www.postgresql.org>PostgreSQL</a> database, and that <a href=https://github.com/heartcombo/devise>Devise</a>
+will be used for authentication.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ rails new -d postgresql new-project
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=display:flex><span><span style=color:#75715e># ...</span>
+</span></span><span style=display:flex><span>group <span style=color:#e6db74>:development</span>, <span style=color:#e6db74>:test</span> <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># ...</span>
+</span></span><span style=display:flex><span>  gem <span style=color:#e6db74>&#39;factory_bot_rails&#39;</span>
+</span></span><span style=display:flex><span>  gem <span style=color:#e6db74>&#39;pry-byebug&#39;</span>
+</span></span><span style=display:flex><span>  gem <span style=color:#e6db74>&#39;pry-doc&#39;</span>
+</span></span><span style=display:flex><span>  gem <span style=color:#e6db74>&#39;rspec-rails&#39;</span>
+</span></span><span style=display:flex><span>  gem <span style=color:#e6db74>&#39;rails-controller-testing&#39;</span>
+</span></span><span style=display:flex><span>  gem <span style=color:#e6db74>&#39;solargraph&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>end</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>group <span style=color:#e6db74>:development</span> <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>  gem <span style=color:#e6db74>&#39;rubocop-rails&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>end</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>gem <span style=color:#e6db74>&#39;devise&#39;</span>
+</span></span><span style=display:flex><span>gem <span style=color:#e6db74>&#39;devise_invitable&#39;</span>
+</span></span><span style=display:flex><span>gem <span style=color:#e6db74>&#39;tailwindcss-rails&#39;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ yarn add @fortawesome/fontawesome-free
+</span></span></code></pre></div><p>Add to <code>app/javascript/packs/application.js</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#34;@fortawesome/fontawesome-free/css/all&#34;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ rails tailwindcss:install
+</span></span><span style=display:flex><span>$ rails db:create
+</span></span><span style=display:flex><span>$ rails g devise:install
+</span></span><span style=display:flex><span>$ rails g devise_invitable User
+</span></span><span style=display:flex><span>$ rails g devise:views
+</span></span><span style=display:flex><span>$ rails g rspec:install
+</span></span></code></pre></div><p>To make Devise happy add the following to <code>config/environments/development.rb</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=display:flex><span>config<span style=color:#f92672>.</span>action_mailer<span style=color:#f92672>.</span>default_url_options <span style=color:#f92672>=</span> { <span style=color:#e6db74>host</span>: <span style=color:#e6db74>&#39;localhost&#39;</span>, <span style=color:#e6db74>port</span>: <span style=color:#ae81ff>3000</span> }
+</span></span></code></pre></div><h2 id=hugo>Hugo</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ hugo new site new-project
+</span></span></code></pre></div><p>I&rsquo;ll assume we are using PostCSS as our preprocessor. In this case, we need to
+execute the following from within project directory.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ <span style=color:#75715e># this can be skipped if we are not using tailwindcss</span>
+</span></span><span style=display:flex><span>$ npm init
+</span></span><span style=display:flex><span>$ npm install --save-dev autoprefixer postcss postcss-cli postcss-import tailwindcss
+</span></span></code></pre></div><p>In <code>/assets/css/postcss.config.js</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>purgecss</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;@fullhuman/postcss-purgecss&#39;</span>)({
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>content</span><span style=color:#f92672>:</span> [ <span style=color:#e6db74>&#39;./hugo_stats.json&#39;</span> ],
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>defaultExtractor</span><span style=color:#f92672>:</span> (<span style=color:#a6e22e>content</span>) =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>els</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>parse</span>(<span style=color:#a6e22e>content</span>).<span style=color:#a6e22e>htmlElements</span>;
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>els</span>.<span style=color:#a6e22e>tags</span>.<span style=color:#a6e22e>concat</span>(<span style=color:#a6e22e>els</span>.<span style=color:#a6e22e>classes</span>, <span style=color:#a6e22e>els</span>.<span style=color:#a6e22e>ids</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>plugins</span><span style=color:#f92672>:</span> [
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;postcss-import&#39;</span>)({
+</span></span><span style=display:flex><span>	  <span style=color:#a6e22e>path</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;assets/css&#34;</span>]
+</span></span><span style=display:flex><span>      }),
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;tailwindcss&#39;</span>)(<span style=color:#e6db74>&#39;assets/css/tailwind.config.js&#39;</span>),
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;autoprefixer&#39;</span>),
+</span></span><span style=display:flex><span>      ...(<span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>env</span>.<span style=color:#a6e22e>HUGO_ENVIRONMENT</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;production&#39;</span> <span style=color:#f92672>?</span> [ <span style=color:#a6e22e>purgecss</span> ] <span style=color:#f92672>:</span> [])
+</span></span><span style=display:flex><span>    ]
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>In <code>/assets/css/main.scss</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scss data-lang=scss><span style=display:flex><span><span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/base&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/components&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@import</span> <span style=color:#e6db74>&#34;node_modules/tailwindcss/utilities&#34;</span>;
+</span></span></code></pre></div><p>In <code>/config.toml</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span><span style=color:#a6e22e>baseURL</span> = <span style=color:#e6db74>&#34;https://www.example.co.uk&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>languageCode</span> = <span style=color:#e6db74>&#34;en-gb&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#34;New Web Site&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>build</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>writeStats</span> = <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ npx tailwindcss init
+</span></span><span style=display:flex><span>$ mv tailwind.config.js assets/css
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ npm install --save @fortawesome/fontawesome-free alpinejs
+</span></span></code></pre></div><p>Then add the following to <code>/assets/js/index.js</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/fontawesome&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;@fortawesome/fontawesome-free/js/solid&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#e6db74>&#39;alpinejs&#39;</span>
+</span></span></code></pre></div><p>In <code>/layouts/_default/baseof.html</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#75715e>&lt;!DOCTYPE html&gt;</span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>html</span> <span style=color:#a6e22e>lang</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;en-gb&#34;</span>&gt;
+</span></span><span style=display:flex><span>  {{- partial &#34;head.html&#34; . -}}
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>body</span>&gt;
+</span></span><span style=display:flex><span>    {{- partial &#34;header.html&#34; . -}}
+</span></span><span style=display:flex><span>    {{- block &#34;main&#34; . }}{{- end }}
+</span></span><span style=display:flex><span>    {{- partial &#34;footer.html&#34; . -}}
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#f92672>body</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>html</span>&gt;
+</span></span></code></pre></div><p>In <code>/layouts/partials/head.html</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>head</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>charset</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span> /&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;viewport&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;width=device-width, initial-scale=1&#34;</span> /&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>title</span>&gt;{{ .Site.Title -}}&lt;/<span style=color:#f92672>title</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;description&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;robots&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;index,follow&#34;</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;googlebot&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;index,follow&#34;</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;google&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;nositelinkssearchbox&#34;</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  {{ $styles := resources.Get &#34;css/main.scss&#34; | toCSS | postCSS (dict &#34;config&#34; &#34;./assets/css/postcss.config.js&#34;) }}
+</span></span><span style=display:flex><span>  {{ if .Site.IsServer }}
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.RelPermalink }}&#34;</span>&gt;
+</span></span><span style=display:flex><span>  {{ else }}
+</span></span><span style=display:flex><span>  {{ $styles := $styles | minify | fingerprint | resources.PostProcess  }}
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $styles.RelPermalink }}&#34;</span>&gt;
+</span></span><span style=display:flex><span>  {{ end }}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  {{- $scripts := resources.Get &#34;js/index.js&#34; | js.Build | minify | fingerprint }}
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text/javascript&#34;</span> <span style=color:#a6e22e>src </span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $scripts.RelPermalink }}&#34;</span>&gt;&lt;/<span style=color:#f92672>script</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>head</span>&gt;
+</span></span></code></pre></div><p>Create blank <code>/layouts/index.html</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>{{ define &#34;main&#34; }}
+</span></span><span style=display:flex><span>Hello World
+</span></span><span style=display:flex><span>{{ end }}
+</span></span></code></pre></div><p>Finally, create empty header and footer</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ touch layouts/partials/footer.html
+</span></span><span style=display:flex><span>$ touch layouts/partials/header.html
+</span></span></code></pre></div></div><footer class="text-sm text-gray-500 py-8 text-center">© 2022 James Hood-Smith</footer></body></html>
